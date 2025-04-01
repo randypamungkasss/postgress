@@ -11,5 +11,8 @@
       <a href="{% url 'detail-view' todo.id %}">{{todo.title}}</a>
       {% endfor %}
     </div>
+    <input name="title" placeholder="Input Title" />
+    <textarea name="task" placeholder="Input Task" />
+    <button>Input Todo</button>
   </body>
 </html>
