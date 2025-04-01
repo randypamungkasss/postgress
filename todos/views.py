@@ -19,10 +19,8 @@ class IndexView(View):
             Todo.objects.create(title=title, task=task)
         return redirect('index')
 
-def index_view(request):
-    todos = Todo.objects.all()
-    return render(request, 'index.html', {"todos": todos})
+class DetailView(View):
+    def get(self, request,id):
+        todo = Todo.objects.get(id=id)
+        return render(request, 'detail_view.html', {"todo":todo})
 
-def detail_view(request, id):
-    todo = Todo.objects.get(id=id)
-    return render(request, 'detail_view.html', {"todo":todo})
