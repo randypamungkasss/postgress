@@ -6,6 +6,10 @@
   <body>
     <h1>{{todo.title}}</h1>
     <p>{{todo.task}}</p>
+    <form method="post" action="{% 'delete' todo.id %}">
+      {% csrf_token %}
+    <button>Delete</button>
+    </form>
     <button><a href="{% url 'index' %}">Back</a></button>
   </body>
 </html>
