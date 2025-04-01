@@ -24,3 +24,8 @@ class DetailView(View):
         todo = Todo.objects.get(id=id)
         return render(request, 'detail_view.html', {"todo":todo})
 
+class DeleteView(View):
+    def get(self, request,id):
+        todo = Todo.objects.get(id=id)
+        todo.delete()
+        return redirect('index')
