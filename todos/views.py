@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Todo
 from django.views import View
+from django.contrib import messages
 
 # Create your views here.
 class IndexView(View):
@@ -11,7 +12,11 @@ class IndexView(View):
     def post(self,request):
         title = request.POST.get('title')
         task = request.POST.get('task')
-        print(f'title: {title}, task: {task}')
+
+        if not title and not task:
+            messages.error(request,"Title and task cannot be empty")
+        else:
+            Todo.objects.create(title=title, task=task)
         return redirect('index')
 
 def index_view(request):
